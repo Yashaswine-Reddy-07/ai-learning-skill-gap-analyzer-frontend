@@ -75,12 +75,7 @@ export const DashboardPage: React.FC = () => {
         />
 
         {/* Top 3 KPI Metric Cards */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: 'var(--spacing-lg)',
-          marginBottom: 'var(--spacing-xl)',
-        }}>
+        <div className="dashboard-kpi-grid">
           <TargetRoleCard
             roleName={data.targetRole}
             roleId={data.targetRoleId}
@@ -94,11 +89,7 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Main Content Grid: Skill Gaps on Left, Recommendations & Progress on Right */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-          gap: 'var(--spacing-xl)',
-        }}>
+        <div className="dashboard-main-grid">
           {/* Left Column: Skill Gaps List */}
           <div>
             <SkillGapList gaps={data.skillGaps} />

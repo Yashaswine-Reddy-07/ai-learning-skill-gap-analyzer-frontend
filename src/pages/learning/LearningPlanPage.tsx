@@ -118,7 +118,7 @@ export const LearningPlanPage: React.FC = () => {
               <BookOpen size={12} />
               <span>AI-Generated Personalized Curriculum</span>
             </span>
-            <h1 style={{ fontSize: 'var(--font-size-3xl)', letterSpacing: '-0.02em', marginBottom: 'var(--spacing-xs)' }}>
+            <h1 style={{ fontSize: 'clamp(1.5rem, 5vw, var(--font-size-3xl))', letterSpacing: '-0.02em', marginBottom: 'var(--spacing-xs)' }}>
               Personalized Learning Plan
             </h1>
             <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-secondary)' }}>
@@ -230,13 +230,14 @@ export const LearningPlanPage: React.FC = () => {
                     display: 'flex',
                     alignItems: 'flex-start',
                     justifyContent: 'space-between',
+                    flexWrap: 'wrap',
                     gap: 'var(--spacing-md)',
                     borderLeft: `5px solid ${isCompleted ? 'var(--color-success)' : 'var(--color-primary)'}`,
                     backgroundColor: isCompleted ? 'var(--color-surface-hover)' : 'var(--color-surface)',
                   }}
                 >
-                  <div style={{ flex: 1 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xs)', marginBottom: 'var(--spacing-xs)' }}>
+                  <div style={{ flex: 1, minWidth: '240px' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--spacing-xs)', marginBottom: 'var(--spacing-xs)' }}>
                       <span className="badge badge-purple" style={{ fontSize: '0.7rem' }}>
                         Priority #{item.priority}
                       </span>

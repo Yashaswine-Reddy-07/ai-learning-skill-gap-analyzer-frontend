@@ -61,24 +61,26 @@ export const LearningProgressCard: React.FC<LearningProgressCardProps> = ({
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: 'var(--spacing-xs)',
                 padding: 'var(--spacing-xs) var(--spacing-sm)',
                 borderRadius: 'var(--radius-sm)',
                 backgroundColor: 'var(--color-surface-hover)',
                 fontSize: 'var(--font-size-xs)',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xs)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xs)', minWidth: 0, flex: 1 }}>
                 {item.status === 'COMPLETED' ? (
-                  <CheckCircle2 size={16} style={{ color: 'var(--color-success)' }} />
+                  <CheckCircle2 size={16} style={{ color: 'var(--color-success)', flexShrink: 0 }} />
                 ) : (
-                  <Clock size={16} style={{ color: 'var(--color-warning)' }} />
+                  <Clock size={16} style={{ color: 'var(--color-warning)', flexShrink: 0 }} />
                 )}
-                <div>
+                <div style={{ overflowWrap: 'anywhere' }}>
                   <strong>{item.skill}:</strong> {item.topic}
                 </div>
               </div>
 
-              <span className={`badge ${item.status === 'COMPLETED' ? 'badge-success' : 'badge-warning'}`}>
+              <span className={`badge ${item.status === 'COMPLETED' ? 'badge-success' : 'badge-warning'}`} style={{ flexShrink: 0 }}>
                 {item.status.replace('_', ' ')}
               </span>
             </div>

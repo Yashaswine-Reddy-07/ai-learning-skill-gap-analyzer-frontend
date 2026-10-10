@@ -80,11 +80,7 @@ export const RoleSelectionPage: React.FC = () => {
         )}
 
         {/* Roles Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: 'var(--spacing-xl)',
-        }}>
+        <div className="roles-grid">
           {roles.map((role) => {
             const isCurrentGoal = user?.careerGoal?.trim().toLowerCase() === role.roleName.trim().toLowerCase();
 
@@ -124,6 +120,8 @@ export const RoleSelectionPage: React.FC = () => {
                           display: 'flex',
                           justifyContent: 'space-between',
                           alignItems: 'center',
+                          flexWrap: 'wrap',
+                          gap: 'var(--spacing-2xs)',
                           padding: 'var(--spacing-xs) var(--spacing-sm)',
                           backgroundColor: 'var(--color-background)',
                           borderRadius: 'var(--radius-sm)',

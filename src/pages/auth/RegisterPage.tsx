@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import { AlertCircle, ArrowRight } from 'lucide-react';
+import { AlertCircle, ArrowRight, Loader2 } from 'lucide-react';
 
 /**
  * Student registration page for onboarding new accounts.
@@ -16,10 +16,21 @@ export const RegisterPage: React.FC = () => {
   const [careerGoal, setCareerGoal] = useState('Data Analyst');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSlowRequest, setIsSlowRequest] = useState(false);
+  const slowTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (slowTimerRef.current) {
+        clearTimeout(slowTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setError(null);
+    setIsSlowRequest(false);
 
     if (!name.trim() || !email.trim() || !password) {
       setError('Please fill in all required fields.');
@@ -33,6 +44,10 @@ export const RegisterPage: React.FC = () => {
 
     try {
       setIsSubmitting(true);
+      slowTimerRef.current = setTimeout(() => {
+        setIsSlowRequest(true);
+      }, 4000);
+
       await register({
         name: name.trim(),
         email: email.trim(),
@@ -41,10 +56,24 @@ export const RegisterPage: React.FC = () => {
       });
       navigate('/dashboard', { replace: true });
     } catch (err: unknown) {
-      const errObj = err as { message?: string };
+      const errObj = err as { message?: string; errorCode?: string };
       console.error('RegisterPage: Registration failed', err);
-      setError(errObj?.message || 'Could not create account. Please check your information and try again.');
+      const rawMsg = errObj?.message || '';
+      const isTimeout =
+        errObj?.errorCode === 'TIMEOUT_ERROR' ||
+        rawMsg.toLowerCase().includes('timeout');
+
+      if (isTimeout) {
+        setError('The server is taking longer than expected to respond. If the cloud backend was inactive, it may be waking up from sleep. Please try again in a few moments.');
+      } else {
+        setError(errObj?.message || 'Could not create account. Please check your information and try again.');
+      }
     } finally {
+      if (slowTimerRef.current) {
+        clearTimeout(slowTimerRef.current);
+        slowTimerRef.current = null;
+      }
+      setIsSlowRequest(false);
       setIsSubmitting(false);
     }
   };
@@ -66,6 +95,13 @@ export const RegisterPage: React.FC = () => {
             <div className="alert alert-danger">
               <AlertCircle size={16} />
               <span>{error}</span>
+            </div>
+          )}
+
+          {isSlowRequest && !error && (
+            <div className="alert alert-info">
+              <Loader2 size={16} className="animate-spin" style={{ flexShrink: 0 }} />
+              <span>Connecting to the server… The first request may take a little longer.</span>
             </div>
           )}
 

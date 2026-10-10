@@ -33,7 +33,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ studentName, t
             <span>AI Learning Dashboard</span>
           </span>
         </div>
-        <h1 style={{ fontSize: 'var(--font-size-2xl)', letterSpacing: '-0.02em' }}>
+        <h1 style={{ fontSize: 'clamp(1.5rem, 5vw, var(--font-size-2xl))', letterSpacing: '-0.02em' }}>
           Welcome back, {studentName}
         </h1>
         <p style={{ fontSize: 'var(--font-size-sm)', marginTop: 'var(--spacing-2xs)' }}>

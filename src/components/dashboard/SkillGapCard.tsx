@@ -28,7 +28,13 @@ export const SkillGapCard: React.FC<SkillGapCardProps> = ({ gap }) => {
       flexDirection: 'column',
       gap: 'var(--spacing-sm)',
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: 'var(--spacing-xs)',
+      }}>
         <div>
           <h4 style={{ fontSize: 'var(--font-size-base)', fontWeight: 'var(--font-weight-semibold)' }}>
             {gap.skillName}
@@ -51,6 +57,8 @@ export const SkillGapCard: React.FC<SkillGapCardProps> = ({ gap }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 'var(--spacing-2xs)',
         fontSize: 'var(--font-size-xs)',
         color: 'var(--color-text-secondary)',
       }}>

@@ -79,7 +79,7 @@ export const ProfilePage: React.FC = () => {
             <User size={12} />
             <span>Student Account</span>
           </span>
-          <h1 style={{ fontSize: 'var(--font-size-3xl)', letterSpacing: '-0.02em', marginBottom: 'var(--spacing-xs)' }}>
+          <h1 style={{ fontSize: 'clamp(1.5rem, 5vw, var(--font-size-3xl))', letterSpacing: '-0.02em', marginBottom: 'var(--spacing-xs)' }}>
             Student Profile
           </h1>
           <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>

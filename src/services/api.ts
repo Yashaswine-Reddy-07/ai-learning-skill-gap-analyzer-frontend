@@ -15,7 +15,7 @@ export const apiClient = axios.create({
     'Content-Type': 'application/json',
     Accept: 'application/json',
   },
-  timeout: 45000,
+  timeout: 90000,
 });
 
 /**
@@ -44,7 +44,7 @@ apiClient.interceptors.request.use(
 );
 
 /**
- * Response Interceptor: Standardizes error extraction and manages token expiration.
+ * Response Interceptor: Standardizes error extraction, friendly timeout messages, and token expiration.
  */
 apiClient.interceptors.response.use(
   (response) => response,
@@ -60,12 +60,29 @@ apiClient.interceptors.response.use(
         }
       }
 
-      const customError: ApiErrorResponse = error.response?.data || {
-        success: false,
-        message: error.message || 'An unexpected network error occurred.',
-        errorCode: 'NETWORK_ERROR',
-        timestamp: new Date().toISOString(),
-      };
+      // Check for request timeout (ECONNABORTED or timeout text in error message)
+      const isTimeout =
+        error.code === 'ECONNABORTED' ||
+        (typeof error.message === 'string' && error.message.toLowerCase().includes('timeout'));
+
+      let errorMessage = error.response?.data?.message;
+      let errorCode = error.response?.data?.errorCode || 'NETWORK_ERROR';
+
+      if (isTimeout) {
+        errorMessage = 'The server is taking longer than expected to respond. If the cloud backend was inactive, it may be waking up from sleep. Please try again in a few moments.';
+        errorCode = 'TIMEOUT_ERROR';
+      } else if (!errorMessage) {
+        errorMessage = error.message || 'An unexpected network error occurred.';
+      }
+
+      const customError: ApiErrorResponse = error.response?.data
+        ? { ...error.response.data, message: errorMessage }
+        : {
+            success: false,
+            message: errorMessage,
+            errorCode,
+            timestamp: new Date().toISOString(),
+          };
 
       return Promise.reject(customError);
     } catch (interceptorErr) {

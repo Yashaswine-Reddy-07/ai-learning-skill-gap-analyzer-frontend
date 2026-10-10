@@ -140,7 +140,7 @@ export const QuizResultPage: React.FC = () => {
               </span>
             </div>
 
-            <div style={{ width: '1px', height: '40px', backgroundColor: 'var(--color-border)' }} />
+            <div className="score-metric-divider" />
 
             <div>
               <span style={{ display: 'block', fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
@@ -275,7 +275,7 @@ export const QuizResultPage: React.FC = () => {
             </p>
           </div>
 
-          <div style={{ display: 'flex', gap: 'var(--spacing-sm)' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--spacing-sm)' }}>
             <Link to={`/quiz/${result.roleId}`} className="btn btn-secondary">
               <RotateCcw size={14} />
               <span>Retake Quiz</span>

@@ -47,8 +47,8 @@ export const TargetRoleCard: React.FC<TargetRoleCardProps> = ({ roleName, roleId
         </p>
       </div>
 
-      <div style={{ marginTop: 'var(--spacing-lg)', display: 'flex', gap: 'var(--spacing-sm)' }}>
-        <Link to={`/quiz/${roleId}`} className="btn btn-primary" style={{ flex: 1, fontSize: 'var(--font-size-xs)' }}>
+      <div style={{ marginTop: 'var(--spacing-lg)', display: 'flex', gap: 'var(--spacing-sm)', flexWrap: 'wrap' }}>
+        <Link to={`/quiz/${roleId}`} className="btn btn-primary" style={{ flex: 1, minWidth: '140px', fontSize: 'var(--font-size-xs)' }}>
           <span>Take Role Quiz</span>
           <ArrowRight size={14} />
         </Link>

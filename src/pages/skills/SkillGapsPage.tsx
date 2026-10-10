@@ -51,7 +51,7 @@ export const SkillGapsPage: React.FC = () => {
             <Award size={12} />
             <span>Gap Analysis Matrix</span>
           </span>
-          <h1 style={{ fontSize: 'var(--font-size-3xl)', letterSpacing: '-0.02em', marginBottom: 'var(--spacing-xs)' }}>
+          <h1 style={{ fontSize: 'clamp(1.5rem, 5vw, var(--font-size-3xl))', letterSpacing: '-0.02em', marginBottom: 'var(--spacing-xs)' }}>
             Objective Skill Gap Analysis
           </h1>
           <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-secondary)', maxWidth: '720px' }}>
@@ -126,7 +126,7 @@ export const SkillGapsPage: React.FC = () => {
                   </div>
 
                   {/* Deficit Badge & Status */}
-                  <div style={{ textAlign: 'right' }}>
+                  <div className="gap-badge-container">
                     <div style={{
                       display: 'inline-flex',
                       alignItems: 'center',

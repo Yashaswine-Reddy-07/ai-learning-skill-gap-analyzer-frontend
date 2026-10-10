@@ -247,6 +247,25 @@ a:hover {
   border: 1px solid var(--color-success-border);
 }
 
+.alert-info {
+  background-color: var(--color-info-bg);
+  color: var(--color-navy-dark);
+  border: 1px solid var(--color-info-border);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .container {
@@ -261,5 +280,234 @@ a:hover {
 
   .card {
     padding: var(--spacing-md);
+  }
+}
+
+/* ========================================================
+   MOBILE RESPONSIVENESS SAFEGUARDS
+   ======================================================== */
+
+/* Prevent padding and borders from increasing element width */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Avoid accidental horizontal scrolling */
+html {
+  width: 100%;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+#root {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Allow flex and grid children to shrink within their containers */
+.container,
+.main-content,
+.card,
+header,
+main,
+section,
+article,
+aside,
+nav,
+form {
+  min-width: 0;
+}
+
+/* Keep media inside the available width */
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+/* Prevent long text and URLs from forcing wider layouts */
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+button,
+label,
+.card {
+  overflow-wrap: anywhere;
+}
+
+/* Keep form controls within the viewport */
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .main-content {
+    padding-top: 16px;
+    padding-bottom: 24px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .btn {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+  }
+}
+
+/* ========================================================
+   NAVBAR RESPONSIVE LAYOUT
+   ======================================================== */
+
+.navbar-desktop-nav,
+.navbar-desktop-user {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-mobile-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--color-navy-border);
+  color: var(--color-text-inverse);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.navbar-mobile-toggle:hover {
+  background-color: var(--color-navy-surface);
+  border-color: var(--color-border-hover);
+}
+
+.navbar-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: var(--color-navy-dark);
+  border-bottom: 1px solid var(--color-navy-border);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-md);
+  gap: var(--spacing-xs);
+  z-index: 99;
+}
+
+@media (max-width: 768px) {
+  .navbar-desktop-nav,
+  .navbar-desktop-user {
+    display: none !important;
+  }
+
+  .navbar-mobile-toggle {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar-mobile-menu {
+    display: none !important;
+  }
+}
+
+/* ========================================================
+   DASHBOARD & EXPLORATION RESPONSIVE GRIDS
+   ======================================================== */
+
+.dashboard-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.dashboard-main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+
+@media (min-width: 992px) {
+  .dashboard-main-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-kpi-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .dashboard-main-grid {
+    gap: var(--spacing-lg);
+  }
+}
+
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+  .roles-grid {
+    gap: var(--spacing-lg);
+  }
+}
+
+.score-metric-divider {
+  width: 1px;
+  height: 40px;
+  background-color: var(--color-border);
+}
+
+@media (max-width: 600px) {
+  .score-metric-divider {
+    display: none;
+  }
+}
+
+.gap-badge-container {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .gap-badge-container {
+    text-align: left;
   }
 }

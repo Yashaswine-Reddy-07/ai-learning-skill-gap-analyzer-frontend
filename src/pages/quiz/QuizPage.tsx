@@ -147,12 +147,19 @@ export const QuizPage: React.FC = () => {
     <div className="main-content">
       <div className="container" style={{ maxWidth: '840px' }}>
         {/* Title Banner */}
-        <div style={{ marginBottom: 'var(--spacing-xl)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{
+          marginBottom: 'var(--spacing-xl)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: 'var(--spacing-xs)',
+        }}>
           <div>
             <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Skill Assessment
             </span>
-            <h1 style={{ fontSize: 'var(--font-size-2xl)' }}>
+            <h1 style={{ fontSize: 'clamp(1.5rem, 5vw, var(--font-size-2xl))' }}>
               {session.roleName}
             </h1>
           </div>
