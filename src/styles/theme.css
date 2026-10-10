@@ -1,0 +1,101 @@
+/* ========================================================
+   GLOBAL DESIGN SYSTEM & THEME TOKENS
+   AI-Powered Personalized Learning & Skill Gap Analyzer
+   ======================================================== */
+
+:root {
+  /* Typography */
+  --font-family-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
+
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-md: 1.125rem;   /* 18px */
+  --font-size-lg: 1.25rem;    /* 20px */
+  --font-size-xl: 1.5rem;     /* 24px */
+  --font-size-2xl: 1.875rem;  /* 30px */
+  --font-size-3xl: 2.25rem;   /* 36px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Color Palette - Navy & Academic Technical Focus */
+  --color-primary: #2563eb;          /* Royal Accent Blue */
+  --color-primary-hover: #1d4ed8;
+  --color-primary-light: #eff6ff;
+
+  --color-navy-dark: #0f172a;        /* Deep Slate Navy Header */
+  --color-navy-surface: #1e293b;
+  --color-navy-border: #334155;
+
+  --color-background: #f8fafc;       /* Crisp Neutral Canvas */
+  --color-surface: #ffffff;          /* Pure White Cards */
+  --color-surface-hover: #f1f5f9;
+
+  --color-text-primary: #0f172a;     /* Deep Slate Text */
+  --color-text-secondary: #475569;   /* Muted Slate Text */
+  --color-text-muted: #94a3b8;       /* Subtle Hint Text */
+  --color-text-inverse: #ffffff;
+
+  --color-border: #e2e8f0;           /* Soft Border */
+  --color-border-hover: #cbd5e1;
+
+  /* Semantic Feedback Accents */
+  --color-success: #10b981;          /* Emerald Green */
+  --color-success-bg: #ecfdf5;
+  --color-success-border: #a7f3d0;
+
+  --color-warning: #f59e0b;          /* Amber Orange */
+  --color-warning-bg: #fffbeb;
+  --color-warning-border: #fde68a;
+
+  --color-danger: #ef4444;           /* Crimson Red */
+  --color-danger-bg: #fef2f2;
+  --color-danger-border: #fecaca;
+
+  --color-info: #0ea5e9;             /* Sky Blue */
+  --color-info-bg: #f0f9ff;
+  --color-info-border: #bae6fd;
+
+  --color-purple: #8b5cf6;           /* Vibrant Violet */
+  --color-purple-bg: #f5f3ff;
+  --color-purple-border: #ddd6fe;
+
+  /* Spacing Scale */
+  --spacing-2xs: 0.25rem;  /* 4px */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 0.75rem;   /* 12px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Elevation Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  /* Animation Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout Widths */
+  --layout-max-width: 1200px;
+  --header-height: 70px;
+}
